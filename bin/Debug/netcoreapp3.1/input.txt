@@ -1,0 +1,28 @@
+﻿a
+aa
+aaa
+aaaa
+aaaaa
+aaaaaa
+aaaaaaa
+aa aa a
+a aa a
+abcdf
+asd12
+ssd50
+asdfas
+asdgtdh123
+test@test.test
+admin@regex101.com
+admin@-regex101.com
+admin@-.com
+admin@a.com
+admin@aa.com
+__@test-regex.com
+ул. Ленина 41.1
+Победы 32
+улица. Улица 9%23
+ул. Вокзальная 11
+Вокзальная 32/3
+Не улица а что-то другое(
+
