@@ -13,25 +13,26 @@ namespace laba5
         static void Main(string[] args)
         {
             string[] input = File.ReadAllLines(@"input.txt");
-            Regex r1 = new Regex(@"^a$"); // a
-            Regex r2 = new Regex(@"^a{6}$"); // aaaaaa
-            Regex r3 = new Regex(@"^a aa a$"); // a aa a
-            Regex r4 = new Regex(@"^[\w]{5,}$"); // Не менее 5 алфавитно-цифровых символов
-            Regex r5 = new Regex(@"^[\w\-]+@((\w+)|(\w[\w-]+))\.\w+$"); // Email
-            Regex r6 = new Regex(@"^(?:[уУ][лЛ]\.\s+)?([а-яА-яёЁ]+(\-[а-яА-ЯёЁ]+)?)\,?\s+(?:[дД]\.\s+)?(\d+(?:[\-\/]\d+)?)$"); // Ул.строка д.число/число
+            //todo: первое задание реализовать одной регуляркой - вроде сделано
+            Regex r1 = new Regex(@"(^а$)|(^а{6}$)|(^а аа а$)");
+            //Regex r1 = new Regex(@"^a$"); // a
+            //Regex r2 = new Regex(@"^a{6}$"); // aaaaaa
+            //Regex r3 = new Regex(@"^a aa a$"); // a aa a
+
+            //todo : пропускает символы подчеркивания - вроде сделал
+            //Теперь пропускает _ (ранее было вместо A-Za-z0-9 -> \w) 
+            Regex r4 = new Regex(@"^[A-Za-z0-9]{5,}$"); // Не менее 5 алфавитно-цифровых символов
+
+            //todo: пропустит email вида ------@mail.ru, вместо этого должен проверить почту, у которой адрес включает в себя буквы, цифры, тире, но начинается всегда с буквы  - вроде сделано
+            Regex r5 = new Regex(@"^[aA-zZ][^-_][\w\-]+@((\w+)|(\w[\w-]+))\.\w+$"); // Email - Regex r5 = new Regex(@"^[^-\d-\--_][\w\-]+@((\w+)|(\w[\w-]+))\.\w+$") - 2 вариант 
+
+            //todo: уЛ - первое, второе - название улицы должно начинаться с большой буквы - вроде сделал
+            Regex r6 = new Regex(@"^(?:[уУ][л]\.\s+)?([А-ЯЁ][а-яё]+(\-[а-яА-ЯёЁ]+)?)\,?\s+(?:[дД]\.\s+)?(\d+(?:[\-\/]\d+)?)$"); // Ул.строка д.число/число
             for(int i = 0; i<input.Length; i++)
             {
                 if (r1.IsMatch(input[i]))
                 {
                     Console.WriteLine("1)"+input[i]);
-                }
-                if (r2.IsMatch(input[i]))
-                {
-                    Console.WriteLine("2)" + input[i]);
-                }
-                if (r3.IsMatch(input[i]))
-                {
-                    Console.WriteLine("3)" + input[i]);
                 }
                 if (r4.IsMatch(input[i]))
                 {
@@ -69,7 +70,9 @@ namespace laba5
                 }
 
             }
-            Regex rd2 = new Regex(@"(\s|^)((https://)|(http://)|(ftp://))?(www\.)?([^-\s][\w_-]+\.){1,4}\w+"); // доп задание 2
+
+            //todo: пропустит адрес вида http://www.-------------.ru - не уверен что правильно
+            Regex rd2 = new Regex(@"^((https://)|(http://)|(ftp://))?(www\.)?([^\s][\w\-]+\.){1,4}\w+"); // доп задание 2
             string[] input2 = File.ReadAllLines(@"input2.txt");
             for (int i = 0; i < input2.Length; i++)
             {
