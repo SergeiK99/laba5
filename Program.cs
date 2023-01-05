@@ -72,7 +72,7 @@ namespace laba5
             }
 
             //todo: пропустит адрес вида http://www.-------------.ru - не уверен что правильно
-            Regex rd2 = new Regex(@"^((https://)|(http://)|(ftp://))?(www\.)?([^\s][\w\-]+\.){1,4}\w+"); // доп задание 2
+            Regex rd2 = new Regex(@"^((https://)|(http://)|(ftp://))?(www\.)?([^-\s][\w_\-]+\.){1,4}\w+"); // доп задание 2
             string[] input2 = File.ReadAllLines(@"input2.txt");
             for (int i = 0; i < input2.Length; i++)
             {
