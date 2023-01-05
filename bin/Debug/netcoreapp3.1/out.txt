@@ -1,3 +1,0 @@
-http://www.sample.domen.ru:0
-http://wwwsample.domenru:54
-http://www.war.op.ru:80
